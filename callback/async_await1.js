@@ -55,7 +55,7 @@ schedule();
 //     let result3 = await doWork("寫功課", 2000);
 //     dt = new Date();
 //     console.log(`${result3} at ${dt.toISOString()}`);
-// })
+// })();
 
 
 
