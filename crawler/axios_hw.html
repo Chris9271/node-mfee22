@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Axios_HW</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Axios CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <p id="userId"></p>
+        <p id="id"></p>
+        <h1 id="title"></h1>
+        <p id="complete"></p> -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script>
+        (async () => {
+            try {
+                let source = await axios.get("https://jsonplaceholder.typicode.com/users");
+                let data = source.data;
+                console.log(data);
+
+                for(let i = 0; i < data.length; i++){
+                    let userId = document.createElement("div");
+                    let name = document.createElement("div");
+                    let userName = document.createElement("div");
+                    let city = document.createElement("div");
+                    let space = document.createElement("p");
+                    
+                    userId.innerText = data[i].id;
+                    name.innerText = data[i].name;
+                    userName.innerText = data[i].username;
+                    city.innerText = data[i].address.city;
+
+                    $(".container").append(userId);
+                    $(".container").append(name);
+                    $(".container").append(userName);
+                    $(".container").append(city);
+                    $(".container").append(space);
+                }
+            
+            } catch (err) {
+                console.error(err);
+            }
+        })()
+    </script>
+</body>
+
+</html>
