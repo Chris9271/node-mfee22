@@ -13,7 +13,6 @@ async function test(){
     //     }, 0);
     // })
 
-
     await new Promise((resolve, reject)=>{
         setTimeout(()=>{
             console.log(2);
