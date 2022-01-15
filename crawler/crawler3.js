@@ -1,5 +1,7 @@
 const axios = require('axios');
+const moment = require('moment');
 const {readFile} = require("fs/promises");
+
 
     // const getData = async() => {
     //     try{
@@ -18,6 +20,7 @@ const {readFile} = require("fs/promises");
             //     "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20210701&stockNo=2618"
             // );
             // let date = "20220111";
+            // let momentDate = moment().format("YYYYMMDD");
             let standardDate = new Date();
             let year = standardDate.getFullYear().toString();
             let month = standardDate.getMonth() + 1;
