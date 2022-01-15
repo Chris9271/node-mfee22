@@ -18,10 +18,16 @@
 
 <body>
     <div class="container">
-        <!-- <p id="userId"></p>
-        <p id="id"></p>
-        <h1 id="title"></h1>
-        <p id="complete"></p> -->
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>City</th>
+            </thead>
+            <tbody> 
+            </tbody>
+        </table>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -32,28 +38,21 @@
         (async () => {
             try {
                 let source = await axios.get("https://jsonplaceholder.typicode.com/users");
-                let data = source.data;
-                console.log(data);
+                let datas = source.data;
+                console.log(datas);
 
-                for(let i = 0; i < data.length; i++){
-                    let userId = document.createElement("div");
-                    let name = document.createElement("div");
-                    let userName = document.createElement("div");
-                    let city = document.createElement("div");
-                    let space = document.createElement("p");
-                    
-                    userId.innerText = data[i].id;
-                    name.innerText = data[i].name;
-                    userName.innerText = data[i].username;
-                    city.innerText = data[i].address.city;
-
-                    $(".container").append(userId);
-                    $(".container").append(name);
-                    $(".container").append(userName);
-                    $(".container").append(city);
-                    $(".container").append(space);
-                }
-            
+                let tbody = document.querySelector("tbody");
+                datas.forEach(data => {
+                    let row = `
+                        <tr>
+                            <td>${data.id}</td>
+                            <td>${data.name}</td>
+                            <td>${data.username}</td>
+                            <td>${data.address.city}</td>
+                        </tr>
+                    `;
+                    $(tbody).append(row);
+                });
             } catch (err) {
                 console.error(err);
             }
