@@ -1,4 +1,4 @@
-//exports = module.exports = {};
+// 開頭有隱藏的 - exports = module.exports = {};
 // exports 本身是一個物件
 
 let name = "default";
@@ -11,9 +11,11 @@ function showName(){
     console.log(name);
 }
 
+// exports = {setName, showName} --> 不可這樣寫
+
 // 一開始 module.exports 跟 exports 是指向同一個記憶體位址
-// 但因為下面又重新給exports建立另一個記憶體
-// 但最後這邊回傳的是 module.exports，所以，如果有給 exports 一個新的物件，對外部是沒有用的。
-// 最後回傳的 module.exports 還是空的
-exports = {setName, showName}
-// module.exports = {setName, showName}
+// 但因為下面的方法導致又重新給exports分配另一個記憶體位址，且給值到這個新記憶體
+// 但最後是回傳 module.exports 的值會是 {}
+// exports則是 {setName, showName}
+
+module.exports = {setName, showName}
